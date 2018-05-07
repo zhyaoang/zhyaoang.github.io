@@ -3,7 +3,6 @@
 
 ```javascript
   var ihubo = {
-    nickName  : "赵阳",
     site : "http://zlocation.cc"
   }
 ```
