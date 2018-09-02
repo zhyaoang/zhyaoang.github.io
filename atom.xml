@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zlocation.cc/"/>
-  <updated>2018-09-02T03:55:41.603Z</updated>
+  <updated>2018-09-02T04:16:02.722Z</updated>
   <id>https://zlocation.cc/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://zlocation.cc/2018/09/02/ES6%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/"/>
     <id>https://zlocation.cc/2018/09/02/ES6学习小记/</id>
     <published>2018-09-02T03:29:46.000Z</published>
-    <updated>2018-09-02T03:55:41.603Z</updated>
+    <updated>2018-09-02T04:16:02.722Z</updated>
     
     <summary type="html">
     
@@ -36,6 +36,8 @@
     
     </summary>
     
+    
+      <category term="代码" scheme="https://zlocation.cc/tags/%E4%BB%A3%E7%A0%81/"/>
     
   </entry>
   
