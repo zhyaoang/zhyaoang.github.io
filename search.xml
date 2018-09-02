@@ -57,9 +57,9 @@
     </entry>
     
     <entry>
-      <title>nginx 添加模块</title>
-      <link href="/2018/02/21/nginx-%E6%B7%BB%E5%8A%A0%E6%A8%A1%E5%9D%97/"/>
-      <url>/2018/02/21/nginx-%E6%B7%BB%E5%8A%A0%E6%A8%A1%E5%9D%97/</url>
+      <title>nginx 添加stream模块</title>
+      <link href="/2018/02/21/nginx-%E6%B7%BB%E5%8A%A0stream%E6%A8%A1%E5%9D%97/"/>
+      <url>/2018/02/21/nginx-%E6%B7%BB%E5%8A%A0stream%E6%A8%A1%E5%9D%97/</url>
       <content type="html"><![CDATA[<p>mac 中添加nginx stream模块,使用brew安装</p><p>1、<code>brew tap homebrew/nginx</code><br>2、<code>brew unlink nginx</code>[已经安装了nginx]<br>3、<code>brew install nginx-full --with-upload-module</code><br>4、<code>brew link nginx-full</code></p><p>linux 添加nginx stream模块</p><p>1、<code>wget http://nginx.org/download/nginx-1.12.2.tar.gz</code><br>2、<code>tar  -zxvf nginx-1.12.2.tar.gz</code><br>3、<code>./configure  --prefix=/usr/local/nginx --with-stream</code><br>4、<code>make</code><br>5、<code>make install</code></p><p>已经安装了Nginx需要 nginx -V 查看目前已经安装的插件，在添加新插件需要添加已经安装的插件参数</p><p>ngx_stream_core_module:<a href="http://nginx.org/en/docs/stream/ngx_stream_core_module.html" target="_blank" rel="noopener">http://nginx.org/en/docs/stream/ngx_stream_core_module.html</a></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">stream &#123;</span><br><span class="line">    upstream backend &#123;</span><br><span class="line">        server <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8080</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen <span class="number">30001</span>;</span><br><span class="line">        proxy_pass backend;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
