@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zlocation.cc/"/>
-  <updated>2018-09-03T01:51:51.142Z</updated>
+  <updated>2018-09-08T09:39:37.844Z</updated>
   <id>https://zlocation.cc/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数组和对象浅拷贝</title>
+    <link href="https://zlocation.cc/2018/09/08/%E6%95%B0%E7%BB%84%E5%92%8C%E5%AF%B9%E8%B1%A1%E6%B5%85%E6%8B%B7%E8%B4%9D/"/>
+    <id>https://zlocation.cc/2018/09/08/数组和对象浅拷贝/</id>
+    <published>2018-09-08T09:30:15.000Z</published>
+    <updated>2018-09-08T09:39:37.844Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;浅拷贝&quot;&gt;&lt;a href=&quot;#浅拷贝&quot; class=&quot;headerlink&quot; title=&quot;浅拷贝&quot;&gt;&lt;/a&gt;浅拷贝&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;晚上十点左右接到电话面试，问对象的拷贝。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure
+        
+      
+    
+    </summary>
+    
+    
+      <category term="代码" scheme="https://zlocation.cc/tags/%E4%BB%A3%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>ES6学习小记</title>

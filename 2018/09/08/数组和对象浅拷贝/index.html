@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>数组和对象浅拷贝 | 乌贼不是贼</title>
+  <meta name="author" content="zhaoyang">
+  
+  <meta name="description" content="若太深奥,懒得知道">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="数组和对象浅拷贝"/>
+  <meta property="og:site_name" content="乌贼不是贼"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="乌贼不是贼" type="application/atom+xml">
+  
+  
+    <link href="/img/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">乌贼不是贼</a><span class="split"></span><span class="title">数组和对象浅拷贝</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2018-09-08</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  
+
+  
+	<div class="col-md-12">
+	  
+
+	  <!-- content -->
+	  <h3 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h3><blockquote>
+<p>晚上十点左右接到电话面试，问对象的拷贝。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下都是浅拷贝，应该还有很多方法吧。。。。</span></span><br><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    name: <span class="string">'小李'</span>,</span><br><span class="line">    other: &#123;</span><br><span class="line">        age: <span class="number">33</span>,</span><br><span class="line">        like: <span class="string">'apple'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    sayName() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// a为外部对象</span></span><br><span class="line"><span class="keyword">let</span> b = [a, <span class="number">12</span>];</span><br><span class="line"><span class="comment">//拷贝b的方法</span></span><br><span class="line"><span class="keyword">let</span> c = [...b]</span><br><span class="line"><span class="keyword">let</span> d = <span class="built_in">Array</span>.from(b)</span><br><span class="line"><span class="keyword">let</span> e = [].concat(b);</span><br><span class="line"><span class="keyword">let</span> f = b.concat();</span><br><span class="line"><span class="keyword">let</span> g = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(b))</span><br><span class="line"><span class="keyword">let</span> h = <span class="built_in">Object</span>.assign([], b);</span><br><span class="line"><span class="keyword">let</span> i = b.slice(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">let</span> [...j] = b;</span><br><span class="line"><span class="keyword">let</span> k = <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>([...b]))</span><br><span class="line">a.name = <span class="string">'小王'</span></span><br><span class="line">a.other.like = <span class="string">'Samsung'</span></span><br><span class="line"><span class="comment">// ------------------------------------------------</span></span><br><span class="line"><span class="comment">// console.log(c)</span></span><br><span class="line"><span class="comment">// [&#123;"name":"小王","other":&#123;"age":33,"like":"Samsung"&#125;&#125;]</span></span><br><span class="line"><span class="comment">// c[0].name = 'c';</span></span><br><span class="line"><span class="comment">// console.log(c[0].name,b[0].name)</span></span><br><span class="line"><span class="comment">// c c</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// c[1] = 'c';</span></span><br><span class="line"><span class="comment">// console.log(c[1], b[1])</span></span><br><span class="line"><span class="comment">// c 12</span></span><br><span class="line"><span class="comment">// ------------------------------------------------</span></span><br><span class="line"><span class="comment">// console.log(d)</span></span><br><span class="line"><span class="comment">// [&#123;"name":"小王","other":&#123;"age":33,"like":"Samsung"&#125;&#125;]</span></span><br><span class="line"><span class="comment">// d[0].name = 'd'</span></span><br><span class="line"><span class="comment">// console.log(d[0].name,b[0].name)</span></span><br><span class="line"><span class="comment">// d d</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// d[1] = 'd';</span></span><br><span class="line"><span class="comment">// console.log(d[1], b[1])</span></span><br><span class="line"><span class="comment">// d 12</span></span><br><span class="line"><span class="comment">// ------------------------------------------------</span></span><br><span class="line"><span class="comment">// console.log(e)</span></span><br><span class="line"><span class="comment">// [&#123;"name":"小王","other":&#123;"age":33,"like":"Samsung"&#125;&#125;]</span></span><br><span class="line"><span class="comment">// e[0].name = 'e'</span></span><br><span class="line"><span class="comment">// console.log(e[0].name,b[0].name)</span></span><br><span class="line"><span class="comment">// e e</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// e[1] = 'e';</span></span><br><span class="line"><span class="comment">// console.log(e[1], b[1])</span></span><br><span class="line"><span class="comment">// e 12</span></span><br><span class="line"><span class="comment">// ------------------------------------------------</span></span><br><span class="line"><span class="comment">// console.log(f)</span></span><br><span class="line"><span class="comment">// [&#123;"name":"小王","other":&#123;"age":33,"like":"Samsung"&#125;&#125;]</span></span><br><span class="line"><span class="comment">// f[0].name = 'f'</span></span><br><span class="line"><span class="comment">// console.log(f[0].name, b[0].name)</span></span><br><span class="line"><span class="comment">// f f</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// f[1] = 'f';</span></span><br><span class="line"><span class="comment">// console.log(f[1], b[1])</span></span><br><span class="line"><span class="comment">// f 12</span></span><br><span class="line"><span class="comment">// ------------------------------------------------</span></span><br><span class="line"><span class="comment">// console.log(g)</span></span><br><span class="line"><span class="comment">// [&#123;"name":"小李","other":&#123;"age":33,"like":"apple"&#125;&#125;]</span></span><br><span class="line"><span class="comment">// g[0].name = 'g'</span></span><br><span class="line"><span class="comment">// console.log(g[0].name, b[0].name)</span></span><br><span class="line"><span class="comment">// g 小王</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// g[1] = 'g';</span></span><br><span class="line"><span class="comment">// console.log(g[1], b[1])</span></span><br><span class="line"><span class="comment">// g 12</span></span><br><span class="line"><span class="comment">// ------------------------------------------------</span></span><br><span class="line"><span class="comment">// console.log(h)</span></span><br><span class="line"><span class="comment">// [&#123;"name":"小王","other":&#123;"age":33,"like":"Samsung"&#125;&#125;]</span></span><br><span class="line"><span class="comment">// h[0].name = 'h'</span></span><br><span class="line"><span class="comment">// console.log(h[0].name, b[0].name)</span></span><br><span class="line"><span class="comment">// h h</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// h[1] = 'h';</span></span><br><span class="line"><span class="comment">// console.log(h[1], b[1])</span></span><br><span class="line"><span class="comment">// h 12</span></span><br><span class="line"><span class="comment">// ------------------------------------------------</span></span><br><span class="line"><span class="comment">// console.log(i)</span></span><br><span class="line"><span class="comment">// [&#123;"name":"小王","other":&#123;"age":33,"like":"Samsung"&#125;&#125;]</span></span><br><span class="line"><span class="comment">// i[0].name = 'i'</span></span><br><span class="line"><span class="comment">// console.log(i[0].name, b[0].name)</span></span><br><span class="line"><span class="comment">// i i</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// i[1] = 'i';</span></span><br><span class="line"><span class="comment">// console.log(i[1], b[1])</span></span><br><span class="line"><span class="comment">// i 12</span></span><br><span class="line"><span class="comment">// ------------------------------------------------</span></span><br><span class="line"><span class="comment">// console.log(j)</span></span><br><span class="line"><span class="comment">// [&#123;"name":"小王","other":&#123;"age":33,"like":"Samsung"&#125;&#125;]</span></span><br><span class="line"><span class="comment">// j[0].name = 'j'</span></span><br><span class="line"><span class="comment">// console.log(j[0].name, b[0].name)</span></span><br><span class="line"><span class="comment">// j j</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// j[1] = 'j';</span></span><br><span class="line"><span class="comment">// console.log(j[1], b[1])</span></span><br><span class="line"><span class="comment">// j 12</span></span><br><span class="line"><span class="comment">// ------------------------------------------------</span></span><br><span class="line"><span class="comment">// console.log(k)</span></span><br><span class="line"><span class="comment">// [&#123;"name":"小王","other":&#123;"age":33,"like":"Samsung"&#125;&#125;]</span></span><br><span class="line"><span class="comment">// k[0].name = 'k'</span></span><br><span class="line"><span class="comment">// console.log(k[0].name, b[0].name)</span></span><br><span class="line"><span class="comment">// k k</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// k[1] = 'k';</span></span><br><span class="line"><span class="comment">// console.log(k[1], b[1])</span></span><br><span class="line"><span class="comment">// k 12</span></span><br><span class="line"><span class="comment">// ------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// =================================================</span></span><br><span class="line"><span class="keyword">let</span> user = &#123;</span><br><span class="line">    name: <span class="string">'小李'</span>, <span class="attr">other</span>: &#123;</span><br><span class="line">        age: <span class="number">33</span>,</span><br><span class="line">        like: <span class="string">'apple'</span>,</span><br><span class="line">        sayName() &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">    user,</span><br><span class="line">    c: &#123;</span><br><span class="line">        name: <span class="string">'老王'</span>, <span class="attr">other</span>: &#123;</span><br><span class="line">            age: <span class="number">13</span>,</span><br><span class="line">            like: <span class="string">'Sony'</span>,</span><br><span class="line">            sayName() &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> s1 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(school))</span><br><span class="line">user.name = <span class="string">'张飞'</span></span><br><span class="line">user.other.like = <span class="string">'貂蝉'</span></span><br><span class="line"><span class="comment">// ------------------------------------------------</span></span><br><span class="line"><span class="comment">// console.log(s1)</span></span><br><span class="line"><span class="comment">// &#123;"a":&#123;"name":"小王","other":&#123;"age":33,"like":"Samsung"&#125;&#125;,"b":&#123;"name":"老王","other":&#123;"age":13,"like":"Sony"&#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// s1.user.name = 's1'</span></span><br><span class="line"><span class="comment">// console.log(s1, school)</span></span><br><span class="line"><span class="comment">// &#123;"user":&#123;"name":"s1","other":&#123;"age":33,"like":"apple"&#125;&#125;,"c":&#123;"name":"老王","other":&#123;"age":13,"like":"Sony"&#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;"user":&#123;"name":"张飞","other":&#123;"age":33,"like":"貂蝉"&#125;&#125;,"c":&#123;"name":"老王","other":&#123;"age":13,"like":"Sony"&#125;&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// s1.c.name = 's1'</span></span><br><span class="line"><span class="comment">// console.log(s1, school)</span></span><br><span class="line"><span class="comment">// &#123;"user":&#123;"name":"s1","other":&#123;"age":33,"like":"apple"&#125;&#125;,"c":&#123;"name":"s1","other":&#123;"age":13,"like":"Sony"&#125;&#125;&#125;</span></span><br><span class="line"><span class="comment">// &#123;"user":&#123;"name":"张飞","other":&#123;"age":33,"like":"貂蝉"&#125;&#125;,"c":&#123;"name":"老王","other":&#123;"age":13,"like":"Sony"&#125;&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+	  
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+	
+		
+			
+			
+		
+	
+		
+			
+			
+			
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	
+	
+		<li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next"><a href="/2018/09/02/ES6学习小记/" class="alignright next">next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2018 zhaoyang
+  
+      with help from <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-wixo/">Wixo</a>.    
+</p> </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+
+</body>
+</html>
